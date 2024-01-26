@@ -10,7 +10,7 @@ from guardrails.validator_base import (
 )
 
 
-@register_validator(name="lower-case", data_type="string")
+@register_validator(name="guardrails/lower-case", data_type="string")
 class LowerCase(Validator):
     """Validates that a value is lower case.
 
