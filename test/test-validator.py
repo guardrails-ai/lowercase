@@ -1,12 +1,12 @@
 from guardrails import Guard
 from pydantic import BaseModel, Field
-from validator import RegexMatch
+from validator import LowerCase
 
 
 class ValidatorTestObject(BaseModel):
     test_val: str = Field(
         validators=[
-            RegexMatch(regex="a.*", match_type="fullmatch", on_fail="exception")
+            LowerCase(on_fail="exception")
         ]
     )
 
@@ -27,7 +27,7 @@ print("validated output: ", guarded_output)
 
 TEST_FAIL_OUTPUT = """
 {
-"test_val": "b test value"
+"test_val": "B test value"
 }
 """
 

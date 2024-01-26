@@ -1,7 +1,7 @@
 [project]
 name = "regexmatch"
 version = "0.0.0"
-description = "Template repo for Guardrails Hub validators."
+description = "Validates that a value is lower case."
 authors = [
     {name = "Guardrails AI", email = "contact@guardrailsai.com"}
 ]
