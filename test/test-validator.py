@@ -1,38 +1,14 @@
 from guardrails import Guard
-from pydantic import BaseModel, Field
 from validator import LowerCase
 
+guard = Guard.from_string(validators=[LowerCase(on_fail='filter')])
 
-class ValidatorTestObject(BaseModel):
-    test_val: str = Field(
-        validators=[
-            LowerCase(on_fail="exception")
-        ]
-    )
+def test_pass():
+  test_output = "a test value"
+  res = guard.parse(test_output)
+  assert(res.validated_output == test_output)
 
-
-TEST_OUTPUT = """
-{
-  "test_val": "a test value"
-}
-"""
-
-
-guard = Guard.from_pydantic(output_class=ValidatorTestObject)
-
-raw_output, guarded_output, *rest = guard.parse(TEST_OUTPUT)
-
-print("validated output: ", guarded_output)
-
-
-TEST_FAIL_OUTPUT = """
-{
-"test_val": "B test value"
-}
-"""
-
-try:
-  guard.parse(TEST_FAIL_OUTPUT)
-  print ("Failed to fail validation when it was supposed to")
-except (Exception):
-  print ('Successfully failed validation when it was supposed to')
+def test_fail():
+  test_output = "A test value"
+  res = guard.parse(test_output)
+  assert(res.validated_output == None)
