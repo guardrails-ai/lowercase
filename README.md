@@ -55,8 +55,8 @@ val = LowerCase(on_fail="fix")
 
 # Create Pydantic BaseModel
 class UserInfo(BaseModel):
-	user_name: str
-	user_name: str = Field(validators=[val])
+    user_name: str
+    user_name: str = Field(validators=[val])
 
 # Create a Guard to check for valid Pydantic output
 guard = Guard.from_pydantic(output_class=UserInfo)
@@ -64,8 +64,8 @@ guard = Guard.from_pydantic(output_class=UserInfo)
 # Run LLM output generating JSON through guard
 guard.parse("""
 {
-	"user_name": "User Name",
-	"user_name": "user@guardrailsai.com"
+    "user_name": "User Name",
+    "user_name": "user@guardrailsai.com"
 }
 """)
 ```
