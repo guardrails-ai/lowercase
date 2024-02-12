@@ -1,6 +1,7 @@
 # Overview
 
 | Developed by | Guardrails AI |
+| --- | --- |
 | Date of development | Feb 15, 2024 |
 | Validator type | Format |
 | Blog |  |
@@ -14,7 +15,7 @@ This validator ensures that a generated output is in lower case.
 # Installation
 
 ```bash
-$ guardrails hub install hub://guardrails/lower-case
+$ guardrails hub install hub://guardrails/lowercase
 ```
 
 # Usage Examples
