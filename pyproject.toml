@@ -1,5 +1,5 @@
 [project]
-name = "regexmatch"
+name = "lowercase"
 version = "0.0.0"
 description = "Validates that a value is lower case."
 authors = [
@@ -7,9 +7,24 @@ authors = [
 ]
 license = {file = "LICENSE"}
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.8.1"
 dependencies = [
-    "guardrails-ai>=0.3.2",
-    "pydantic>=2.4.2",
-    "pytest"
+    "guardrails-ai>=0.4.0",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pyright",
+    "pytest",
+    "ruff"
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-rP"
+testpaths = [
+    "test"
+]
+
+[tool.pyright]
+include = ["validator"]

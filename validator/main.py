@@ -10,7 +10,7 @@ from guardrails.validator_base import (
 )
 
 
-@register_validator(name="guardrails/lower-case", data_type="string")
+@register_validator(name="guardrails/lowercase", data_type="string")
 class LowerCase(Validator):
     """Validates that a value is lower case.
 
@@ -18,17 +18,17 @@ class LowerCase(Validator):
 
     | Property                      | Description                       |
     | ----------------------------- | --------------------------------- |
-    | Name for `format` attribute   | `lower-case`                      |
+    | Name for `format` attribute   | `guardrails/lowercase`            |
     | Supported data types          | `string`                          |
     | Programmatic fix              | Convert to lower case.            |
     """
 
     def validate(self, value: Any, metadata: Dict) -> ValidationResult:
-        logger.debug(f"Validating {value} is lower case...")
+        logger.debug(f"Validating {value} is lowercase...")
 
         if value.lower() != value:
             return FailResult(
-                error_message=f"Value {value} is not lower case.",
+                error_message=f"Value {value} is not lowercase.",
                 fix_value=value.lower(),
             )
 
